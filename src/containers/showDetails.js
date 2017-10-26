@@ -13,14 +13,16 @@ const mapStateToProps = (state, props) => {
     type: todo.type,
     category: todo.category,
     status: todo.status,
-    details: todo.details
+    details: todo.details,
+    order: todo.order
   }
 }
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    saveTodo: (_id, name, category, status, details) => {
-      dispatch(saveTodo(_id, name, category, status, details))
+    saveTodo: (_id, name, category, status, details, order) => {
+      console.log('sa', order)
+      dispatch(saveTodo(_id, name, category, status, details, order))
       props.history.push('/')
     },
     deleteTodo: (_id) => {

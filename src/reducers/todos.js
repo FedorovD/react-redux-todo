@@ -1,6 +1,7 @@
 const db = [
     {
         _id: "13f2b8677429a",
+        order: 1,
         name: 'Купить молоко',
         category: 'task',
         status: 'todo',
@@ -8,6 +9,7 @@ const db = [
     },
     {
         _id: "6d2cd6bbe2348",
+        order: 2,
         name: 'Подобрать чек',
         category: 'task',
         status: 'todo',
@@ -16,6 +18,7 @@ const db = [
     },
     {
         _id: "e34e40298276f",
+        order: 3,
         name: 'Обналичить чек',
         category: 'bug',
         status: 'todo',
@@ -24,6 +27,7 @@ const db = [
     },
     {
         _id: "1e409fffba412",
+        order: 1,
         name: 'Собрать подписи',
         category: 'bug',
         status: 'inProgress',
@@ -31,6 +35,7 @@ const db = [
     },
     {
         _id: "a0b2892f70073",
+        order: 2,
         name: 'Возвратить книгу',
         category: 'task',
         status: 'completed',
@@ -39,6 +44,7 @@ const db = [
     },
     {
         _id: "092f4bd2dcd1c",
+        order: 3,
         name: 'Получить автограф Гэри',
         category: 'bug',
         status: 'inProgress',
@@ -47,6 +53,7 @@ const db = [
     },
     {
         _id: "bf50ba0741e2",
+        order: 1,
         name: 'Исповедоваться в грехах',
         category: 'task',
         status: 'inProgress',
@@ -54,6 +61,7 @@ const db = [
     },
     {
         _id: "98884212f849d",
+        order: 2,
         name: 'Проголосовать',
         category: 'task',
         status: 'completed',
@@ -61,6 +69,7 @@ const db = [
     },
     {
         _id: "614d241c719fe",
+        order: 10,
         name: 'Найти рождественскую ёлку',
         category: 'task',
         status: 'completed',
@@ -70,6 +79,7 @@ const db = [
 ]
 const todos = (state = db, action) => {
     if (action.type === 'ADD_TODO') {
+        console.log(action)
         return [
             ...state,
             {
@@ -77,7 +87,8 @@ const todos = (state = db, action) => {
                 name: action.name,
                 category: action.category,
                 status: action.status || 'todo',
-                details: action.details
+                details: action.details,
+                order: action.order || 0
             }
         ]
     }else if (action.type === 'SAVE_TODO') {
@@ -86,17 +97,14 @@ const todos = (state = db, action) => {
         name: action.name,
         category: action.category,
         status: action.status,
-        details: action.details
+        details: action.details,
+        order: action.order
         }
         return state.map(todo => {
             if (todo._id === action._id) return changedTodo
             else return todo
         });
     }else if (action.type === 'DELETE_TODO') {
-        // return state.map(todo => {
-        //     if (todo._id === action._id) return changedTodo
-        //     else return todo
-        // });
         return state.filter(todo => todo._id !== action._id)
     }
     return state

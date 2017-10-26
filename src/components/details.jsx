@@ -2,11 +2,12 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 
-const Details = ({_id, name, type, category, status, details, saveTodo, deleteTodo}) => {
+const Details = ({_id, name, type, category, status, details, order,  saveTodo, deleteTodo}) => {
     let _name,
         _category,
         _status,
-        _details;
+        _details,
+        _order;
 
     return (<div>
         <nav className="breadcrumb" aria-label="breadcrumbs">
@@ -21,13 +22,22 @@ const Details = ({_id, name, type, category, status, details, saveTodo, deleteTo
             if (!name.trim()) {
                 return
             }
-            saveTodo(_id, _name, _category, _status, _details)
+            saveTodo(_id, _name, _category, _status, _details, _order)
         }}>
             <div className="field">
                 <label className="label">Name</label>
                 <div className="control">
                     <input className="input" type="text" defaultValue={name} ref={node => {
               _name = node
+            }}/>
+                </div>
+            </div>
+
+            <div className="field">
+                <label className="label">Order</label>
+                <div className="control">
+                    <input className="input" type="number" defaultValue={order} ref={node => {
+              _order = node
             }}/>
                 </div>
             </div>

@@ -7,16 +7,18 @@ const Header = () => (
     <div className="logo">
       <img src={logo} alt="react and redux logo" height="15%" width="15%" />
     </div>
-    <Link to={`/add`}>
-      <p className="field">
+    
+    <p className="field">
+      <Link to={`/add`}>
         <button className="button is-medium">
           <span className="icon is-medium">
             <i className="fa fa-plus"></i>
           </span>
           <span>Add todo</span>
         </button>
-      </p>
-    </Link>
+      </Link>
+    </p>
+
     <h2 className="title is-2">
       Getting Things Done App
       </h2>

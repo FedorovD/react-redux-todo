@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { addTodo } from '../actions'
 
 let AddTodo = ({ dispatch }) => {
-  let name, category, details;
+  let name, category, details, order;
   return (
     <div>
       <nav className="breadcrumb" aria-label="breadcrumbs">
@@ -19,9 +19,10 @@ let AddTodo = ({ dispatch }) => {
         if (!name.value.trim()) {
           return
         }
-        dispatch(addTodo(name.value, category.value, details.value))
+        dispatch(addTodo(name.value, category.value, details.value, order.value))
         name.value = ''
         details.value = ''
+        order.value = ''
       }}>
         <h3 className="title is-3 has-text-primary">Add new todo</h3>
         <div className="field">
@@ -29,6 +30,15 @@ let AddTodo = ({ dispatch }) => {
           <div className="control">
             <input className="input" type="text" ref={node => {
               name = node
+            }} />
+          </div>
+        </div>
+
+        <div className="field">
+          <label className="label">Order</label>
+          <div className="control">
+            <input className="input" type="number" defaultValue='0' ref={node => {
+              order = node
             }} />
           </div>
         </div>
