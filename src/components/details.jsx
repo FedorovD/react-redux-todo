@@ -1,13 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-
-const Details = ({_id, name, type, status, details}) => (
+const Details = ({_id, name, type, category, status, details}) => (
     <div>
         <nav className="breadcrumb" aria-label="breadcrumbs">
             <ul>
-                <li><Link to={`/`}>Main</Link></li>
-                <li className="is-active"><a aria-current="page">Details</a></li>
+                <li><Link to={`/`}><span className="icon is-small"><i className="fa fa-book"></i></span>Main</Link></li>
+                <li className="is-active"><a aria-current="page"><span className="icon is-small"><i className="fa fa-pencil"></i></span>Details</a></li>
             </ul>
         </nav>
 
@@ -23,7 +22,7 @@ const Details = ({_id, name, type, status, details}) => (
                 <label className="label">Category</label>
                 <div className="control">
                     <div className="select">
-                        <select>
+                        <select defaultValue={category}>
                             <option value="bug">Bug</option>
                             <option value="task">Task</option>
                         </select>
@@ -35,7 +34,7 @@ const Details = ({_id, name, type, status, details}) => (
                 <label className="label">Status</label>
                 <div className="control">
                     <div className="select">
-                        <select>
+                        <select defaultValue={status}>
                             <option value="todo">Todo</option>
                             <option value="inProgress">In Progress</option>
                             <option value="completed">Completed</option>

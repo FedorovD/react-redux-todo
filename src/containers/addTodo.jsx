@@ -4,43 +4,23 @@ import { Link } from 'react-router-dom'
 import { addTodo } from '../actions'
 
 let AddTodo = ({ dispatch }) => {
-  let name, type, details;
+  let name, category, details;
 
   return (
     <div>
       <nav className="breadcrumb" aria-label="breadcrumbs">
         <ul>
-          <li><Link to={`/`}>Main</Link></li>
-          <li className="is-active"><a aria-current="page">Add</a></li>
+          <li><Link to={`/`}><span className="icon is-small"><i className="fa fa-book"></i></span>Main</Link></li>
+          <li className="is-active"><a aria-current="page"><span className="icon is-small"><i className="fa fa-plus"></i></span>Add</a></li>
         </ul>
       </nav>
-
-      {/* <form
-        onSubmit={e => {
-          e.preventDefault()
-          if (!input.value.trim()) {
-            return
-          }
-          dispatch(addTodo(input.value))
-          input.value = ''
-        }}
-      >
-        <input
-          ref={node => {
-            input = node
-          }}
-        />
-        <button type="submit">
-          Add Todo
-        </button>
-      </form> */}
 
       <form className="detailsForm" onSubmit={e => {
         e.preventDefault()
         if (!name.value.trim()) {
           return
         }
-        dispatch(addTodo(name.value))
+        dispatch(addTodo(name.value, category.value, details.value))
         name.value = ''
         details.value = ''
       }}>
@@ -58,7 +38,9 @@ let AddTodo = ({ dispatch }) => {
           <label className="label">Category</label>
           <div className="control">
             <div className="select">
-              <select>
+              <select ref={node => {
+              category = node
+            }}>
                 <option value="bug">Bug</option>
                 <option value="task">Task</option>
               </select>

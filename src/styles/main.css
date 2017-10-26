@@ -41,3 +41,7 @@ form.detailsForm {
     margin: 0 auto;
     padding-top: 20px;
 }
+
+nav.breadcrumb {
+    position: fixed;
+}

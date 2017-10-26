@@ -4,11 +4,11 @@ import  Details  from '../components/details'
 const mapStateToProps = (state, props ) => {
   const _id = props.match.params.id;
   const todo = state.todos.find(todo => todo._id === _id);
-  console.log(todo)
   return {
     _id: todo._id,
     name: todo.name,
     type: todo.type,
+    category: todo.category,
     status: todo.status,
     details: todo.details
   }
