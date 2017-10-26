@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import  Details  from '../components/details'
-import { saveTodo } from '../actions'
+import { saveTodo, deleteTodo } from '../actions'
 // import { push } from 'react-router-redux'
 
 
@@ -17,11 +17,15 @@ const mapStateToProps = (state, props) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, props) => {
   return {
     saveTodo: (_id, name, category, status, details) => {
       dispatch(saveTodo(_id, name, category, status, details))
-      // dispatch(push('/'))
+      props.history.push('/')
+    },
+    deleteTodo: (_id) => {
+      dispatch(deleteTodo(_id))
+      props.history.push('/')
     }
   }
 }

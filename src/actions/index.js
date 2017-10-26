@@ -19,3 +19,10 @@ export const saveTodo = (_id, name, category, status, details) => {
     details: details.value
   }
 }
+
+export const deleteTodo = (_id) => {
+  return {
+    type: 'DELETE_TODO',
+    _id
+  }
+}

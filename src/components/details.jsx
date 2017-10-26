@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 
-const Details = ({_id, name, type, category, status, details, saveTodo}) => {
+const Details = ({_id, name, type, category, status, details, saveTodo, deleteTodo}) => {
     let _name,
         _category,
         _status,
@@ -72,6 +72,11 @@ const Details = ({_id, name, type, category, status, details, saveTodo}) => {
 
             <div className="control">
                 <button className="button is-primary" type="submit">Save</button>
+                <button className="button is-danger is-right" type="button" onClick={e => {
+                    e.preventDefault()
+                    const conf = window.confirm(`Are you sure?`);
+                    if(conf) deleteTodo(_id);
+                }}>Delete</button>
             </div>
         </form>
     </div>)

@@ -5,7 +5,6 @@ import { addTodo } from '../actions'
 
 let AddTodo = ({ dispatch }) => {
   let name, category, details;
-
   return (
     <div>
       <nav className="breadcrumb" aria-label="breadcrumbs">

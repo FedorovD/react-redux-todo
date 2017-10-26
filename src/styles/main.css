@@ -46,3 +46,6 @@ form.addForm {
 nav.breadcrumb {
     position: fixed;
 }
+.control button.is-right {
+    float: right;
+}

@@ -88,11 +88,16 @@ const todos = (state = db, action) => {
         status: action.status,
         details: action.details
         }
-
         return state.map(todo => {
             if (todo._id === action._id) return changedTodo
             else return todo
         });
+    }else if (action.type === 'DELETE_TODO') {
+        // return state.map(todo => {
+        //     if (todo._id === action._id) return changedTodo
+        //     else return todo
+        // });
+        return state.filter(todo => todo._id !== action._id)
     }
     return state
 }
