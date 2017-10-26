@@ -36,10 +36,11 @@ header.main {
 }
 
 /* details */
-form.detailsForm {
+form.detailsForm,
+form.addForm {
     max-width: 600px;
     margin: 0 auto;
-    padding-top: 20px;
+    padding-top: 40px;
 }
 
 nav.breadcrumb {

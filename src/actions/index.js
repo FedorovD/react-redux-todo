@@ -8,3 +8,14 @@ export const addTodo = (name, category, details) => {
     details
   }
 }
+
+export const saveTodo = (_id, name, category, status, details) => {
+  return {
+    type: 'SAVE_TODO',
+    _id,
+    name: name.value,
+    category: category.value,
+    status: status.value,
+    details: details.value
+  }
+}

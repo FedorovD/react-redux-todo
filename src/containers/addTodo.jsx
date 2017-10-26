@@ -15,7 +15,7 @@ let AddTodo = ({ dispatch }) => {
         </ul>
       </nav>
 
-      <form className="detailsForm" onSubmit={e => {
+      <form className="addForm" onSubmit={e => {
         e.preventDefault()
         if (!name.value.trim()) {
           return

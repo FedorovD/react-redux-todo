@@ -1,7 +1,10 @@
 import { connect } from 'react-redux'
 import  Details  from '../components/details'
+import { saveTodo } from '../actions'
+// import { push } from 'react-router-redux'
 
-const mapStateToProps = (state, props ) => {
+
+const mapStateToProps = (state, props) => {
   const _id = props.match.params.id;
   const todo = state.todos.find(todo => todo._id === _id);
   return {
@@ -14,11 +17,12 @@ const mapStateToProps = (state, props ) => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    // onTodoClick: id => {
-    //   dispatch(toggleTodo(id))
-    //}
+    saveTodo: (_id, name, category, status, details) => {
+      dispatch(saveTodo(_id, name, category, status, details))
+      // dispatch(push('/'))
+    }
   }
 }
 

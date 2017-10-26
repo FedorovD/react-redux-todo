@@ -68,7 +68,6 @@ const db = [
         Nam ac euismod eros, nec tincidunt sapien. Quisque nulla augue, venenatis id blandit id, bibendum quis sapien. Vivamus non risus et libero tincidunt pellentesque. Curabitur eu enim convallis, sodales turpis eu, condimentum sapien. Nunc gravida mattis ultricies. Sed lacus urna, congue at dignissim ac, elementum eget ante. Etiam ac blandit tellus. Nulla eu elementum neque. Donec in ante et enim vehicula eleifend.`
     }
 ]
-
 const todos = (state = db, action) => {
     if (action.type === 'ADD_TODO') {
         return [
@@ -81,6 +80,19 @@ const todos = (state = db, action) => {
                 details: action.details
             }
         ]
+    }else if (action.type === 'SAVE_TODO') {
+        let changedTodo = {
+        _id: action._id,
+        name: action.name,
+        category: action.category,
+        status: action.status,
+        details: action.details
+        }
+
+        return state.map(todo => {
+            if (todo._id === action._id) return changedTodo
+            else return todo
+        });
     }
     return state
 }
