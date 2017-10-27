@@ -21,7 +21,6 @@ const mapStateToProps = (state, props) => {
 const mapDispatchToProps = (dispatch, props) => {
   return {
     saveTodo: (_id, name, category, status, details, order) => {
-      console.log('sa', order)
       dispatch(saveTodo(_id, name, category, status, details, order))
       props.history.push('/')
     },

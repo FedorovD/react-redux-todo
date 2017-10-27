@@ -28,3 +28,11 @@ export const deleteTodo = (_id) => {
     _id
   }
 }
+
+export const moveTodo = (_id, status) => {
+  return {
+    type: 'MOVE_TODO',
+    _id,
+    status
+  }
+}

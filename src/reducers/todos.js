@@ -79,7 +79,6 @@ const db = [
 ]
 const todos = (state = db, action) => {
     if (action.type === 'ADD_TODO') {
-        console.log(action)
         return [
             ...state,
             {
@@ -106,6 +105,28 @@ const todos = (state = db, action) => {
         });
     }else if (action.type === 'DELETE_TODO') {
         return state.filter(todo => todo._id !== action._id)
+    }else if (action.type === 'MOVE_TODO') {
+        const __id = action._id;
+        let status;
+        switch (action.status) {
+            case 'ToDo':
+                status = 'todo';
+                break;
+            case 'In Progress':
+                status = 'inProgress';
+                break;
+            case 'Done':
+                status = 'completed';
+                break;
+            default:
+                console.error('Something went wrong, see in reducers/todos.js')
+        }
+        return state.map(todo => {
+            if(todo._id === __id){
+                todo.status = status
+            }
+            return todo
+    });
     }
     return state
 }
